@@ -178,7 +178,7 @@ else
 endif
 
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
-TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko nxp-nci.ko qti_battery_charger.ko xiaomi_touch.ko synaptics_tcm2.ko nt38771_touch.ko goodix_core.ko"
+TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko nxp-nci.ko qti_battery_charger.ko xiaomi_touch.ko synaptics_tcm2.ko nt38771_touch.ko"
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone48/temp"
 TW_BATTERY_SYSFS_WAIT_SECONDS := 6
