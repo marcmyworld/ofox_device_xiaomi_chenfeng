@@ -16,7 +16,7 @@ PRODUCT_RELEASE_NAME := chenfeng
 PRODUCT_DEVICE := chenfeng
 PRODUCT_NAME := twrp_chenfeng
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := civi 14 pro 
+PRODUCT_MODEL := Civi 4 Pro
 PRODUCT_MANUFACTURER := Xiaomi
 
 # Assert
