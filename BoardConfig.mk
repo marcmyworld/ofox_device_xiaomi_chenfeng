@@ -182,3 +182,10 @@ TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko focaltech_3683g.ko focaltech_touc
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone48/temp"
 TW_BATTERY_SYSFS_WAIT_SECONDS := 6
+
+# Allow custom TWRP / OrangeFox Soong plugins
+BUILD_BROKEN_PLUGIN_VALIDATION := \
+    soong-libaosprecovery_defaults \
+    soong-libguitwrp_defaults \
+    soong-libminuitwrp_defaults \
+    soong-vold_defaults
