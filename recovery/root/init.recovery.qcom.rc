@@ -53,9 +53,9 @@ on init
 on boot
     setprop sys.usb.config adb
     # Dual LED flashlight workaround
-    start peridot-flashlight
+    start chenfeng-flashlight
 
-service peridot-flashlight /system/bin/peridot_flashlight.sh
+service chenfeng-flashlight /system/bin/chenfeng_flashlight.sh
     class core
     user root
     group root
