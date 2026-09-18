@@ -68,6 +68,7 @@ on property:twrp.modules.loaded=true
     wait /sys/kernel/boot_adsp/boot 2
     write /sys/kernel/boot_adsp/boot 1
     start vendor.qseecomd
+    start vendor.health-recovery
     start vibratorfeature-hal-service
 
 on property:vendor.sys.listeners.registered=true
