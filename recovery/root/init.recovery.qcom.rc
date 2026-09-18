@@ -65,6 +65,8 @@ service chenfeng-flashlight /system/bin/chenfeng_flashlight.sh
     seclabel u:r:recovery:s0
 
 on property:twrp.modules.loaded=true
+    wait /sys/kernel/boot_adsp/boot 2
+    write /sys/kernel/boot_adsp/boot 1
     start vendor.qseecomd
     start vibratorfeature-hal-service
 

@@ -37,6 +37,11 @@ rebind_touch() {
 
 rebind_touch
 
+if [ -e /sys/kernel/boot_adsp/boot ]; then
+	echo 1 > /sys/kernel/boot_adsp/boot 2>/dev/null
+	LOGMSG "ADSP boot signaled from runatboot.sh"
+fi
+
 /sbin/prune_historic_logs.sh 10
 
 LOGMSG "---$SCRIPT_NAME end---"
