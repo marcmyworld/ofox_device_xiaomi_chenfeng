@@ -5,3 +5,4 @@ service vendor.health-recovery /vendor/bin/hw/android.hardware.health-service.qt
     group root
     capabilities WAKE_ALARM BLOCK_SUSPEND
     file /dev/kmsg w
+    disabled

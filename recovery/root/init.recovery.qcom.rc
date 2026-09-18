@@ -66,7 +66,6 @@ service chenfeng-flashlight /system/bin/chenfeng_flashlight.sh
 
 on property:twrp.modules.loaded=true
     start vendor.qseecomd
-    start vendor.health-recovery
     start vibratorfeature-hal-service
 
 on property:vendor.sys.listeners.registered=true
