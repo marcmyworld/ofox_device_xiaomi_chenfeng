@@ -40,12 +40,25 @@ on fs
     chown system system /dev/ion
     mkdir /mnt/vendor 0775 shell system
     mkdir /mnt/vendor/persist 0775 shell system
+    mkdir /persist 0775 shell system
     mkdir /tmp/persist 0775 shell system
     mount none /tmp/persist /mnt/vendor/persist bind rec
+    mount none /tmp/persist /persist bind rec
 
-    # Load ADSP firmware for PMIC
-    mkdir /firmware
-    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro context=u:object_r:firmware_file:s0
+    # Protect recovery rootfs (/system, /vendor) from being shadowed by zip installers
+    mount none /system /system bind rec
+    mount none /vendor /vendor bind rec
+
+    # Mount firmware and dsp partitions for ADSP and PMIC
+    mkdir /vendor/firmware_mnt 0771 system system
+    mkdir /firmware 0771 system system
+    mkdir /vendor/dsp 0771 system system
+    mkdir /dsp 0771 system system
+
+    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /vendor/firmware_mnt ro context=u:object_r:firmware_file:s0
+    mount ext4 /dev/block/bootdevice/by-name/dsp${ro.boot.slot_suffix} /vendor/dsp ro
+    mount none /vendor/firmware_mnt /firmware bind rec
+    mount none /vendor/dsp /dsp bind rec
 
 on property:dev.mnt.blk.firmware=*
     write /sys/kernel/boot_adsp/boot 1

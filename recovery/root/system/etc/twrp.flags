@@ -32,7 +32,7 @@
 /bluetooth             vfat    /dev/block/bootdevice/by-name/bluetooth                            flags=display="Bluetooth";slotselect;fsflags="ro,shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0 wait"
 /bluetooth_image       emmc    /dev/block/bootdevice/by-name/bluetooth                            flags=display="Bluetooth";backup=1;slotselect;subpartitionof=/modem_img
 
-/dsp                   vfat    /dev/block/bootdevice/by-name/dsp                                  flags=display="DSP";slotselect
+/dsp                   ext4    /dev/block/bootdevice/by-name/dsp                                  flags=display="DSP";slotselect
 /dsp_image             emmc    /dev/block/bootdevice/by-name/dsp                                  flags=display="DSP";backup=1;slotselect;subpartitionof=/modem_img
 
 # EFS/IMEI partitions
