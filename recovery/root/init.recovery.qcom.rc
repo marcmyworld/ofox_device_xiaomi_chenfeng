@@ -43,6 +43,13 @@ on fs
     mkdir /tmp/persist 0775 shell system
     mount none /tmp/persist /mnt/vendor/persist bind rec
 
+    # Load ADSP firmware for PMIC
+    mkdir /firmware
+    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro context=u:object_r:firmware_file:s0
+
+on property:dev.mnt.blk.firmware=*
+    write /sys/kernel/boot_adsp/boot 1
+
 on init
     start vendor.boot-qti
 
@@ -58,13 +65,6 @@ service chenfeng-flashlight /system/bin/chenfeng_flashlight.sh
     seclabel u:r:recovery:s0
 
 on property:twrp.modules.loaded=true
-    # Mount firmware
-    mkdir /firmware
-    mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
-    # Load ADSP firmware for PMIC
-    wait /sys/kernel/boot_adsp/boot
-    write /sys/kernel/boot_adsp/boot 1
-    wait /sys/class/power_supply/battery
     start vendor.qseecomd
     start vendor.health-recovery
     start vibratorfeature-hal-service
